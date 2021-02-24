@@ -305,7 +305,7 @@ func (i *AzureInfra) removeAllAzureSecondaryIPs(rc *reconcilecontext.ReconcileCo
 				if *netif.Primary {
 					//load network interface
 					var err error
-					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.NetworkResourceGroupName, getNameFromResourceID(*netif.ID), "")
+					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.ResourceGroupName, getNameFromResourceID(*netif.ID), "")
 					if err != nil {
 						i.log.Error(err, "unable to get", "network interface", netif)
 						results <- err
@@ -358,7 +358,7 @@ func (i *AzureInfra) removeUnNeededAzureAssignedIPs(rc *reconcilecontext.Reconci
 				if *netif.Primary {
 					//load network interface
 					var err error
-					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.NetworkResourceGroupName, getNameFromResourceID(*netif.ID), "")
+					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.ResourceGroupName, getNameFromResourceID(*netif.ID), "")
 					if err != nil {
 						i.log.Error(err, "unable to get", "network interface", netif)
 						results <- err
@@ -427,7 +427,7 @@ func (i *AzureInfra) addNeededAzureAssignedIPs(rc *reconcilecontext.ReconcileCon
 				if *netif.Primary {
 					//load network interface
 					var err error
-					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.NetworkResourceGroupName, getNameFromResourceID(*netif.ID), "")
+					networkInterface, err = i.networkInterface.Get(rc.Context, rc.Infrastructure.Status.PlatformStatus.Azure.ResourceGroupName, getNameFromResourceID(*netif.ID), "")
 					if err != nil {
 						i.log.Error(err, "unable to get", "network interface", netif)
 						results <- err
